@@ -30,6 +30,7 @@ class Configuration implements ConfigurationInterface
             ->booleanNode('remove_extra_spaces')->defaultTrue()->end()
             ->booleanNode('compress_js')->defaultTrue()->end()
             ->booleanNode('compress_css')->defaultTrue()->end()
+            ->scalarNode('skip_block_tag')->defaultValue('\{\{\{')->end()
 
             ->scalarNode('js_compressor')
                 ->validate()
