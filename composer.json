@@ -1,5 +1,5 @@
 {
-    "name": "kcs/compressor-bundle",
+    "name": "icedevelopment/compressor-bundle",
     "description": "Html compressor and optimizer bundle",
     "license": "MIT",
     "require": {
