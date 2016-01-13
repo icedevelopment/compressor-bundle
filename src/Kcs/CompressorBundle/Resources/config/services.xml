@@ -18,6 +18,7 @@
         <service id="kcs_compressor.html_compressor" class="%kcs_compressor.html_compressor.class%">
             <argument type="service" id="event_dispatcher" />
             <argument>%kcs_compressor.compress_html%</argument>
+            <argument>%kcs_compressor.skip_block_tag%</argument>
         </service>
     </services>
 </container>
