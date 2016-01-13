@@ -27,12 +27,19 @@ class Html implements CompressorInterface
      */
     protected $dispatcher = null;
 
+    /**
+     * The value to put between <!-- and --> to create a skipped block
+     * @var string
+     */
+    protected $skipBlockTag;
+
     private $listenerSorted = false;
 
-    public function __construct(EventDispatcherInterface $dispatcher, $enabled)
+    public function __construct(EventDispatcherInterface $dispatcher, $enabled, $skipBlockTag)
     {
         $this->setEventDispatcher($dispatcher);
         $this->setEnabled($enabled);
+        $this->setSkipBlockTag($skipBlockTag);
     }
 
     protected function setEventDispatcher(EventDispatcherInterface $dispatcher)
@@ -58,6 +65,17 @@ class Html implements CompressorInterface
     {
         return $this->enabled;
     }
+
+    protected function setSkipBlockTag($v)
+    {
+        $this->skipBlockTag = $v;
+    }
+
+    public function getSkipBlockTag()
+    {
+        return $this->skipBlockTag;
+    }
+
 
     /**
      * Process an HTML page and compress it preserving critical blocks
@@ -120,7 +138,7 @@ class Html implements CompressorInterface
      */
     protected function getSkipBlockPattern()
     {
-        return '#<!--\s*\{\{\{\s*-->(.*?)<!--\s*\}\}\}\s*-->#ui';
+        return '#<!--\s*' . $this->getSkipBlockTag() . '\s*-->(.*?)<!--\s*' . $this->getSkipBlockTag() . '\s*-->#ui';
     }
 
     /**
