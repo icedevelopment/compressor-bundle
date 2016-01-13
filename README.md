@@ -9,7 +9,7 @@
 * Include this bundle in your composer.json
 
 ```bash
-$ php composer.phar require kcs/compressor-bundle dev-master
+$ php composer.phar require icedevelopment/compressor-bundle dev-master
 ```
 
 Enable the bundle in your AppKernel.php
@@ -43,6 +43,7 @@ kcs_compressor:
     remove_extra_spaces:  true      # Remove extra spaces in HTML
     compress_js:          true      # Enable inline js compression
     compress_css:         true      # Enable inline css compression
+    skip_block_tag:         '\#\#\#'      # Allow to change skipBlockTag, to make it compatible with twig
 ```
 
 If inline js (or css) compression is enabled you must specify the compressor to be used:
